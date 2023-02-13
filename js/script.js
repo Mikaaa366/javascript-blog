@@ -7,19 +7,24 @@
 */
 
 const titleClickHandler = function(event){
+    const clickedElement = this;
     console.log('Link was clicked!');
     console.log(event)
   
-    /* remove class 'active' from all article links  */
+    /* [DONE] remove class 'active' from all article links  */
     const activeLinks = document.querySelectorAll('.titles a.active');
 
     for(let activeLink of activeLinks){
         activeLink.classList.remove('active');
     }
   
-    /* add class 'active' to the clicked link */
+    /* [IN PROGRESS] add class 'active' to the clicked link  */
+    const activeLink = document.querySelector('.titles a');
+    clickedElement.classList.add('active'); 
+    console.log('clickedElement:', clickedElement);
+     
   
-    /* remove class 'active' from all articles */
+    /* [DONE] remove class 'active' from all articles */
     const activeArticles = document.querySelectorAll('.post');
     
     for(let activeArticle of activeArticles){
@@ -34,9 +39,9 @@ const titleClickHandler = function(event){
   }
   
   const links = document.querySelectorAll('.titles a');
-  
+
   for(let link of links){
     link.addEventListener('click', titleClickHandler);
   }
-
+  
 
