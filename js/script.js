@@ -73,7 +73,7 @@ function generateTitleLinks(customSelector = ''){
     /* create HTML of the link */
     // const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
     const linkHTMLData = {id: articleId, title: articleTitle};
-    const linkHTML = templates.articleTagLink(linkHTMLData);
+    const linkHTML = templates.articleLink(linkHTMLData);
     console.log(linkHTML);
     /* insert link into titleList */
     titleList.insertAdjacentHTML('beforeend', linkHTML);
@@ -253,11 +253,12 @@ function generateAuthors(){
   
   /* [NEW] START LOOP: for each tag in allTags: */
   for (let author in allAuthors) {
-    const authorLinkHTML =  '<li><a href="#author-' + author + '">' + author + ' (' + allAuthors[author] + ') ' + '</a></li>';
-    console.log('authorLinkHTML:', authorLinkHTML);
-    allAuthorsHTML += authorLinkHTML; 
+    allAuthorsData.authors.push({
+      author: author,
+      count: allAuthors[author],
+    });
   }
-  authorList.innerHTML = allAuthorsHTML;
+  authorList.innerHTML = templates.authorColumnLink(allAuthorsData);
 
 }
   
