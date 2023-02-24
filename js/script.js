@@ -253,12 +253,11 @@ function generateAuthors(){
   
   /* [NEW] START LOOP: for each tag in allTags: */
   for (let author in allAuthors) {
-    allAuthorsData.authors.push({
-      author: author,
-      count: allAuthors[author],
-    });
+    const authorLinkHTML =  '<li><a href="#author-' + author + '">' + author + ' (' + allAuthors[author] + ') ' + '</a></li>';
+    console.log('authorLinkHTML:', authorLinkHTML);
+    allAuthorsHTML += authorLinkHTML; 
   }
-  authorList.innerHTML = templates.authorColumnLink(allAuthorsData);
+  authorList.innerHTML = allAuthorsHTML;
 
 }
   
